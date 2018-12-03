@@ -16,105 +16,35 @@ SEARCH_STRING = "{}[\w\W]*{}"
 LEADING_NAME_TAG_LENGTH = len("<item><key><string>")
 TRAILING_NAME_TAG_LENGTH = len("</string></key><value><int>")
 TRAILING_VALUE_TAG_LENGTH = len("</int></value></item>")
-CRAFTABLE_ITEMS = {
-    "Keg": 0,
-    "Bee House": 0,
-    "Scarecrow": 0,
-    "Torch": 0,
-    "Chest": 0,
-    "Gate": 0,
-    "Hardwood Fence": 0,
-    "Iron Fence": 0,
-    "Stone Fence": 0,
-    "Wood Fence": 0,
-    "Cask": 0,
-    "Furnace": 0,
-    "Cheese Press": 0,
-    "Mayonnaise Machine": 0,
-    "Seed Maker": 0,
-    "Loom": 0,
-    "Oil Maker": 0,
-    "Recycling Machine": 0,
-    "Worm Bin": 0,
-    "Preserves Jar": 0,
-    "Charcoal Kiln": 0,
-    "Tapper": 0,
-    "Lightning Rod": 0,
-    "Slime Incubator": 0,
-    "Slime Egg-Press": 0,
-    "Crystalarium": 0,
-    "Sprinkler": 0,
-    "Quality Sprinkler": 0,
-    "Iridium Sprinkler": 0,
-    "Staircase": 0,
-    "Flute Block": 0,
-    "Drum Block": 0,
-    "Basic Fertilizer": 0,
-    "Quality Fertilizer": 0,
-    "Basic Retaining Soil": 0,
-    "Quality Retaining Soil": 0,
-    "Speed-Gro": 0,
-    "Deluxe Speed-Gro": 0,
-    "Cherry Bomb": 0,
-    "Bomb": 0,
-    "Mega Bomb": 0,
-    "Explosive Ammo": 0,
-    "Transmute (Fe)": 0,
-    "Transmute (Au)": 0,
-    "Ancient Seeds": 0,
-    "Wild Seeds (Sp)": 0,
-    "Wild Seeds (Su)": 0,
-    "Wild Seeds (Fa)": 0,
-    "Wild Seeds (Wi)": 0,
-    "Warp Totem: Farm": 0,
-    "Warp Totem: Mountains": 0,
-    "Warp Totem: Beach": 0,
-    "Rain Totem": 0,
-    "Field Snack": 0,
-    "Crystal Floor": 0,
-    "Wood Path": 0,
-    "Gravel Path": 0,
-    "Cobblestone Path": 0,
-    "Wild Bait": 0,
-    "Bait": 0,
-    "Spinner": 0,
-    "Magnet": 0,
-    "Trap Bobber": 0,
-    "Cork Bobber": 0,
-    "Dressed Spinner": 0,
-    "Treasure Hunter": 0,
-    "Barbed Hook": 0,
-    "Oil Of Garlic": 0,
-    "Life Elixir": 0,
-    "Crab Pot": 0,
-    "Iridium Band": 0,
-    "Ring of Yoba": 0,
-    "Sturdy Ring": 0,
-    "Warrior Ring": 0,
-    "Wicked Statue": 0,
-    "Campfire": 0,
-    "Wood Sign": 0,
-    "Stone Sign": 0,
-    "Garden Pot": 0,
-    "Weathered Floor": 0,
-    "Wooden Brazier": 0,
-    "Wood Lamp-post": 0,
-    "Iron Lamp-post": 0,
-    "Wood Floor": 0,
-    "Stone Floor": 0,
-    "Stepping Stone Path": 0,
-    "Straw Floor": 0,
-    "Crystal Path": 0,
-    "Stone Brazier": 0,
-    "Barrel Brazier": 0,
-    "Stump Brazier": 0,
-    "Gold Brazier": 0,
-    "Carved Brazier": 0,
-    "Skull Brazier": 0,
-    "Marble Brazier": 0,
-    "Tub o' Flowers": 0,
-    "Jack-O-Lantern": 0
-}
+CRAFTABLE_ITEMS = ('Ancient Seeds', 'Bait', 'Barbed Hook', 'Barrel Brazier',
+                   'Basic Fertilizer', 'Basic Retaining Soil', 'Bee House',
+                   'Bomb', 'Campfire', 'Carved Brazier', 'Cask',
+                   'Charcoal Kiln', 'Cheese Press', 'Cherry Bomb', 'Chest',
+                   'Cobblestone Path', 'Cork Bobber', 'Crab Pot',
+                   'Crystal Floor', 'Crystal Path', 'Crystalarium',
+                   'Deluxe Speed-Gro', 'Dressed Spinner', 'Drum Block',
+                   'Explosive Ammo', 'Field Snack', 'Flute Block', 'Furnace',
+                   'Garden Pot', 'Gate', 'Gold Brazier', 'Gravel Path',
+                   'Hardwood Fence', 'Iridium Band', 'Iridium Sprinkler',
+                   'Iron Fence', 'Iron Lamp-post', 'Jack-O-Lantern', 'Keg',
+                   'Life Elixir', 'Lightning Rod', 'Loom', 'Magnet',
+                   'Marble Brazier', 'Mayonnaise Machine', 'Mega Bomb',
+                   'Oil Maker', 'Oil Of Garlic', 'Preserves Jar',
+                   'Quality Fertilizer', 'Quality Retaining Soil',
+                   'Quality Sprinkler', 'Rain Totem', 'Recycling Machine',
+                   'Ring of Yoba', 'Scarecrow', 'Seed Maker', 'Skull Brazier',
+                   'Slime Egg-Press', 'Slime Incubator', 'Speed-Gro',
+                   'Spinner', 'Sprinkler', 'Staircase', 'Stepping Stone Path',
+                   'Stone Brazier', 'Stone Fence', 'Stone Floor', 'Stone Sign',
+                   'Straw Floor', 'Stump Brazier', 'Sturdy Ring', 'Tapper',
+                   'Torch', 'Transmute (Au)', 'Transmute (Fe)', 'Trap Bobber',
+                   'Treasure Hunter', "Tub o' Flowers", 'Warp Totem: Beach',
+                   'Warp Totem: Farm', 'Warp Totem: Mountains', 'Warrior Ring',
+                   'Weathered Floor', 'Wicked Statue', 'Wild Bait',
+                   'Wild Seeds (Fa)', 'Wild Seeds (Sp)', 'Wild Seeds (Su)',
+                   'Wild Seeds (Wi)', 'Wood Fence', 'Wood Floor',
+                   'Wood Lamp-post', 'Wood Path', 'Wood Sign',
+                   'Wooden Brazier', 'Worm Bin')
 
 
 class CraftingChecker:
@@ -127,45 +57,75 @@ class CraftingChecker:
 
     def __init__(self, save_files_directory, save_file_name,
                  checker_type="crafting"):
-        self.checker_type = checker_type
+        self.save_file_name = save_file_name.split("_")[0]
+        self.checker_type = checker_type  # this is dumb
         file = self.__load_save_file("{}\\{}\\{}".format(
-            save_files_directory, save_file_name, save_file_name))
+            save_files_directory,
+            save_file_name,
+            save_file_name
+        ))
         self.crafting_recipes = self.__get_recipes(checker_type, file)
 
     def get_unlearned_recipes(self):
-        return set(CRAFTABLE_ITEMS.keys()).difference(set(
-            self.crafting_recipes.keys()))
+        """
+        Get recipes that have not been learned
+        :return: (string, string, ...) a tuple of unlearned crafting items
+        """
+        return tuple(set(CRAFTABLE_ITEMS).difference(set(
+            self.crafting_recipes.keys())))
 
     def get_uncrafted_items(self):
+        """
+        Get items that have not been crafted - including unlearned items
+        :return: tuple[string, string, ...] a tuple containing items that
+        have not been crafted
+        """
         uncrafted_items = list(self.get_unlearned_recipes())
 
         for k, v in self.crafting_recipes.items():
             if v == 0:
                 uncrafted_items.append(k)
 
-        return uncrafted_items
+        return tuple(uncrafted_items)
+
+    def print_uncrafted_items(self):
+        """
+        Print a list of items that have not been crafted - including items
+        that have not been learned
+        """
+        uncrafted_items = sorted(self.get_uncrafted_items())
+        count = 0
+
+        for i in uncrafted_items:
+            count += 1
+            print("{}. {}".format(count, i))
 
     def get_crafted_items(self):
+        """
+        Get items that have been crafted.
+        :return: tuple[string, string, ...] a tuple containing items that have
+        been crafted
+        """
         crafted_items = []
 
         for k, v in self.crafting_recipes.items():
             if v > 0:
                 crafted_items.append(k)
 
-        return crafted_items
+        return tuple(crafted_items)
 
     def get_learned_recipes(self):
         """
-
-        :return:
+        Get crafting recipes that have been learned
+        :return: tuple(string, string, ...) a tuple containing all crafting
+        recipes that have been learned
         """
-        return list(self.crafting_recipes.keys())
+        return tuple(self.crafting_recipes.keys())
 
     def __load_save_file(self, save_file_name):
-        """
-
-        :param save_file_name:
-        :return:
+        """ Loads the save file.
+        :param save_file_name: the absolute path to the file and file name
+        :return: string: contents of the save file
         """
         file = open(save_file_name, "r")
         line = file.readline()
@@ -222,17 +182,17 @@ class CraftingChecker:
         return recipes
 
     def __repr__(self):
-
         return "{:-^30}\n" \
+               "Save file: {}\n" \
                "There are {} total items\n" \
                "{} have been crafted\n" \
                "{} have not been crafted (including unlearned)\n" \
                "{} recipes have not been learned\n" \
                "{:-^30}".format(
             "",
-            len(CRAFTABLE_ITEMS.keys()),
+            self.save_file_name,
+            len(CRAFTABLE_ITEMS),
             len(self.get_crafted_items()),
             len(self.get_uncrafted_items()),
             len(self.get_unlearned_recipes()),
-            ""
-        )
+            "")
