@@ -66,6 +66,31 @@ class CraftingChecker:
         ))
         self.crafting_recipes = self.__get_recipes(checker_type, file)
 
+    def print_crafted_items(self):
+        for i in self.crafting_recipes:
+            print(i)
+
+    def print_uncrafted_items(self):
+        """
+        Print a list of items that have not been crafted - including items
+        that have not been learned
+        """
+        uncrafted_items = sorted(self.get_uncrafted_items())
+        if len(uncrafted_items) == 0:
+            print("You have learned all recipes.")
+            return
+
+        count = 0
+        for i in uncrafted_items:
+            count += 1
+            print("{}. {}".format(count, i))
+
+    def print_unlearned_items(self):
+        count = 0
+        for i in self.get_unlearned_recipes():
+            count += 1
+            print("{}. {}".format(count, i))
+
     def get_unlearned_recipes(self):
         """
         Get recipes that have not been learned
@@ -87,18 +112,6 @@ class CraftingChecker:
                 uncrafted_items.append(k)
 
         return tuple(uncrafted_items)
-
-    def print_uncrafted_items(self):
-        """
-        Print a list of items that have not been crafted - including items
-        that have not been learned
-        """
-        uncrafted_items = sorted(self.get_uncrafted_items())
-        count = 0
-
-        for i in uncrafted_items:
-            count += 1
-            print("{}. {}".format(count, i))
 
     def get_crafted_items(self):
         """
@@ -141,8 +154,8 @@ class CraftingChecker:
 
         :param recipe_type:
         :param file: the xml that has been read from the save file
-        :return: a dictionary containing {item: amount_crafted} - this
-        dictionary will not contain unlearned recipes
+        :return: dict[string: int] - a dictionary containing {item:
+        amount_crafted} - this dictionary will not contain unlearned recipes
         """
         tags = (
             SEARCH_TAGS[0].format(recipe_type),
@@ -158,19 +171,18 @@ class CraftingChecker:
             # skip the first set of tags
             scan_counter = scan_counter + LEADING_NAME_TAG_LENGTH
 
-            # name
+            # name of the item
             name = recipe_search[scan_counter: recipe_search.index("<",
                                                                    scan_counter)]
-            # find the index of the < at the end of the name as names are
-            # variable length
+            # find the index of the < at the end of the name
             scan_counter = recipe_search.index("<", scan_counter)
 
             # skip closing name and opening value tags
             scan_counter = scan_counter + TRAILING_NAME_TAG_LENGTH
             # the value is >= 0 and has len >= 0, find the index of the
-            value = recipe_search[
-                    scan_counter: recipe_search.index("<",
-                                                      scan_counter)]
+            # following opening tag
+            value = recipe_search[scan_counter:
+                                  recipe_search.index("<", scan_counter)]
             # closing tag immediately following the value
             scan_counter = recipe_search.index("<", scan_counter)
             # add the length of the trailing closing tags to the counter
@@ -196,3 +208,29 @@ class CraftingChecker:
             len(self.get_uncrafted_items()),
             len(self.get_unlearned_recipes()),
             "")
+
+    def __str__(self):
+        crafted_items = self.get_crafted_items()
+        uncrafted_items = self.get_uncrafted_items()
+        unlearned_recipes = self.get_unlearned_recipes()
+        max(len(crafted_items), len(uncrafted_items), len(unlearned_recipes))
+
+        string = "{:-^30}\n".format("Crafted Items")
+        counter = 0
+        for i in crafted_items:
+            counter += 1
+            string += "{}. {}\n".format(counter, i)
+
+        string += "{:-^30}\n".format("")
+        counter = 0
+        string += "{:-^30}\n".format("Uncrafted Items")
+        for i in uncrafted_items:
+            counter += 1
+            string += "{}. {}".format(counter, i)
+            if i in unlearned_recipes:
+                string += " (unlearned)"
+
+            string += "\n"
+
+        string += "{:-^30}".format("")
+        return string
